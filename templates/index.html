@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BDD Investigación de Distrofia Coroidea</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='./estilo.css') }}"
+    />
+  </head>
+
+  <body>
+    <h1>Ingestigación sobre la Distrofia Coroidea</h1>
+    <!-- Menú -->
+    <div class="container">
+      <div class="navbar">
+        <button onclick="mostrar('principal')">Página Principal</button>
+        <button onclick="mostrar('clasificador');limpiarCampos()">
+          Clasificador ERG
+        </button>
+        <button onclick="mostrar('clasificador_completo');limpiarCampos()">
+          Clasificador Completo
+        </button>
+        <button onclick="mostrar('consultor')">Consultor</button>
+      </div>
+
+      <!-- Contenido Principal -->
+      <div class="content">
+        <div id="principal" class="seccion activa">
+          <h2>Página Principal</h2>
+          <p>Seleccione una opción del menú para continuar.</p>
+        </div>
+
+        <div id="consultor" class="seccion">
+          <h2>Consulta de BDD</h2>
+          <div class="table-container">
+            <table id="consultor-table">
+              <thead>
+                <tr>
+                  <th>ID_Animal</th>
+                  <th>Sexo</th>
+                  <th>OD_1</th>
+                  <th>OI_1</th>
+                  <th>OD_2</th>
+                  <th>OI_2</th>
+                  <th>OD_3</th>
+                  <th>OI_3</th>
+                  <th>OD_4</th>
+                  <th>OI_4</th>
+                  <th>OD_5</th>
+                  <th>OI_5</th>
+                  <th>Edad_Opto</th>
+                  <th>Dato_OPT</th>
+                  <th>Edad_ERG</th>
+                  <th>Degenera</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data will be dynamically added here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Vista Clasificador ERG-->
+        <div id="clasificador" class="seccion">
+          <h2>Clasificador ERG</h2>
+          <form id="formulario">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Genero</th>
+                    <th colspan="2">Escotópico Max a-w</th>
+                    <th colspan="2">Escotópico Max b-w</th>
+                    <th colspan="2">Fotópico Max a-w</th>
+                    <th colspan="2">Fotópico Max b-w</th>
+                    <th>edad_erg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><select id="genero" class="custom-select"></select></td>
+                    <!-- Escotópico Max a-w -->
+                    <td>
+                      <input
+                        id="OD_1"
+                        type="number"
+                        name="OD_1"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_1"
+                        type="number"
+                        name="OI_1"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Escotópico Max b-w -->
+                    <td>
+                      <input
+                        id="OD_2"
+                        type="number"
+                        name="OD_2"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_2"
+                        type="number"
+                        name="OI_2"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Fotópico Max a-w -->
+                    <td>
+                      <input
+                        id="OD_3"
+                        type="number"
+                        name="OD_3"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_3"
+                        type="number"
+                        name="OI_3"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Fotópico Max b-w -->
+                    <td>
+                      <input
+                        id="OD_4"
+                        type="number"
+                        name="OD_4"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_4"
+                        type="number"
+                        name="OI_4"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <select id="edad_erg" class="custom-select"></select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="submit">Clasificar</button>
+          </form>
+          <div id="resultado">Resultado</div>
+        </div>
+        <!-- Vista Clasificador completo-->
+        <div id="clasificador_completo" class="seccion">
+          <h2>Clasificador completo</h2>
+          <form id="formulario_completo">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Genero</th>
+                    <th colspan="2">Escotópico Max a-w</th>
+                    <th colspan="2">Escotópico Max b-w</th>
+                    <th colspan="2">Fotópico Max a-w</th>
+                    <th colspan="2">Fotópico Max b-w</th>
+                    <th>Edad_Opto</th>
+                    <th>Dato_OPT</th>
+                    <th>OCT_ONL</th>
+                    <th>OCT_Retina</th>
+                    <th>edad_erg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select id="genero2" class="custom-select"></select>
+                    </td>
+                    <!-- Escotópico Max a-w -->
+                    <td>
+                      <input
+                        id="OD_12"
+                        type="number"
+                        name="OD_1"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_12"
+                        type="number"
+                        name="OI_1"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Escotópico Max b-w -->
+                    <td>
+                      <input
+                        id="OD_22"
+                        type="number"
+                        name="OD_2"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_22"
+                        type="number"
+                        name="OI_2"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Fotópico Max a-w -->
+                    <td>
+                      <input
+                        id="OD_32"
+                        type="number"
+                        name="OD_3"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_32"
+                        type="number"
+                        name="OI_3"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Fotópico Max b-w -->
+                    <td>
+                      <input
+                        id="OD_42"
+                        type="number"
+                        name="OD_4"
+                        step="any"
+                        placeholder="OD"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_42"
+                        type="number"
+                        name="OI_4"
+                        step="any"
+                        placeholder="OI"
+                        required
+                      />
+                    </td>
+                    <!-- Datos OPT -->
+                    <td>
+                      <input
+                        id="Edad_Opto2"
+                        type="number"
+                        name="Edad_Opto"
+                        step="any"
+                        placeholder="Edad_Opto"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="Dato_OPT2"
+                        type="number"
+                        name="Dato_OPT"
+                        step="any"
+                        placeholder="Dato_OPT"
+                        required
+                      />
+                    </td>
+                    <!-- Datos OCT -->
+                    <td>
+                      <input
+                        id="OD_52"
+                        type="number"
+                        name="OD_5"
+                        step="any"
+                        placeholder="OCT_ONL"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id="OI_52"
+                        type="number"
+                        name="OI_5"
+                        step="any"
+                        placeholder="OCT_Retina"
+                        required
+                      />
+                    </td>
+                    <td>
+                      <select id="edad_erg2" class="custom-select"></select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="submit">Clasificar</button>
+          </form>
+          <div id="resultado">Resultado</div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="modalResultado" class="modal">
+      <div class="modal-content"><span class="close">&times;</span><p id="contenidoModal">Aquí va el resultado...</p>
+    </div>
+</div>
+
+
+    <!-- Pie de página -->
+    <div class="footer">Universidad de Alicante, Ingeniería Biomédica 2025</div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
