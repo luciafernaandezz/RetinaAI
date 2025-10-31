@@ -4,22 +4,24 @@ This repository includes the application I built for my final university project
 In addition to the predictive model, the project includes a structured database and a simple web application that integrates the AI model for experimentation.
 
 ## Project Overview
-The study explores the use of machine learning and deep learning models to analyze biological data obtained from experimental mice.  
-By processing these datasets, the goal is to predict whether the retina will degenerate or remain healthy, based on the input parameters collected in the lab.
-
-The project is divided into three main components:
-1. **Machine Learning Model**: Responsible for training and classification.
-2. **SQL Database**: Stores the data collected from genetically modified mice.
-3. **Web Application**: Provides an interface to interact with the model and view predictions.
-
-## Approach for Applying the Model
+The project was primarily experimental, focusing on the application of Artificial Intelligence to a binary classification problem. Both machine learning and deep learning models were explored and implemented. The data used consisted of measurements obtained from laboratory experiments, and after analyzing these data, two classifiers were designed and developed. 
+The approach for applying the models was:
 1. **Data Collection & Preprocessing**
-The data came from laboratory experiments with mice and was organized into a structured dataset.
-Several preprocessing steps were carried out: cleaning, editing variables, and preparing a SQL database to efficiently manage the information.
+The data was organized into a structured dataset; for that, several preprocessing steps were carried out:
+- Cleaning
+- Editing variables
+- Deleting instances and variables
+- Feature Scaling
+- categorization and encoding
 2. **Model experimentation**
-Different machine learning and deep learning models were tested and compared.
-I experimented with data scaling, hyperparameter tuning, architecture adjustments, and data augmentation.
-Since the dataset was relatively small, the focus was on understanding model behavior rather than achieving perfect accuracy.
+Different Machine Learning (XGBoost, SVM, Random Forest, Naive Bayes, and Logistic Regression) and Deep Learning models (DNN, MLP) were tested and compared.
+I experimented:
+- Data scaling
+- Hyperparameter tuning
+- Architecture adjustments 
+- Data augmentation
+
+All documentation and experimental code notebooks are included in the `Exp_ML_DL` folder.
 ## Database
 A **SQL database** was designed to store mice's experimental data from lab experiments.  
 A database creation script is provided (`insert_animales_mysql_updated.sql`) to set up the schema and initial data.
