@@ -7,6 +7,7 @@ In addition to the predictive model, the project includes a structured database 
 The project was primarily experimental, focusing on the application of Artificial Intelligence to a binary classification problem. Both machine learning and deep learning models were explored and implemented. The data used consisted of measurements obtained from laboratory experiments, and after analyzing these data, two classifiers were designed and developed. 
 The approach for applying the models was:
 1. **Data Collection & Preprocessing**
+
 The data was organized into a structured dataset; for that, several preprocessing steps were carried out:
 - Cleaning
 - Editing variables
@@ -14,6 +15,7 @@ The data was organized into a structured dataset; for that, several preprocessin
 - Feature Scaling
 - categorization and encoding
 2. **Model experimentation**
+
 Different Machine Learning (XGBoost, SVM, Random Forest, Naive Bayes, and Logistic Regression) and Deep Learning models (DNN, MLP) were tested and compared.
 I experimented:
 - Data scaling
